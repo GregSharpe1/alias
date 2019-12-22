@@ -1,0 +1,5 @@
+alias copy='xclip -selection clipboard'
+alias paste='xclip -selection clipboard -o'
+
+# webvpn
+alias workvpn="sudo openconnect --protocol=anyconnect --authgroup=GNFTE --user=gsharpe webvpn.gracenote.com"

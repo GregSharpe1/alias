@@ -1,0 +1,15 @@
+alias tigs="tig status"
+
+# Git crypt find users
+alias gpgcryptusers='pushd .git-crypt/keys/default/0; for file in *.gpg; do echo "${file} : " && git log -- ${file} | sed -n 9p; done; popd'
+
+alias gc='git clone'
+alias gp='git pull'
+alias gpp='git push'
+alias gcm='git commit -m'
+alias gs='git stash'
+alias gsp='git stash pop'
+alias gsc='git stash clear'
+alias gbc='git checkout'
+alias gbcb='git checkout -b'
+alias gbn="git branch | grep '^*' | cut -d'*' -f2 | cut -d' ' -f2 | copy"

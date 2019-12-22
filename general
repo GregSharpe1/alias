@@ -1,0 +1,35 @@
+alias vssh="vim $HOME/.ssh/config"
+alias sz"source ~/.zshrc"
+alias vsc="code ."
+alias ..='cd ..; ls'
+alias ...='cd ../..; ls'
+alias ....='cd ../../..; ls'
+alias .....='cd ../../../..; ls'
+alias ......='cd ../../../../..; ls'
+alias "/"="ranger ."
+alias d='docker'
+alias please=sudo
+alias v=vim
+alias da='deactivate'
+alias ra=ranger
+alias curlip='curl ifconfig.co'
+
+alias g="git"
+alias h="history"
+
+# copy file interactive
+alias cp='cp -i'
+
+# move file interactive
+alias mv='mv -i'
+
+# untar
+alias untar='tar xvf'
+
+# yay update
+alias update="yay -Syu" # yay dependency
+
+# Make sure to open code with --no-gpu in terminal
+alias code="code --disable-gpu"
+
+alias ghistory="history | grep $@"
