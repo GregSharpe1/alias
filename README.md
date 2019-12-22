@@ -11,4 +11,4 @@ I can't and don't want to remember stupidly long commands, so if I think I'm eve
 
 * `git clone https://github.com/GregSharpe1/alias ~/.alias`
 
-Place `for f in $(find $HOME/.alias/ -type f); do source $f; done` into ~/.`$SHELL`rc file, to source make sure all aliases are available.
+Place `for f in $(find $HOME/.alias/*.alias -type f); do source $f; done` into ~/.`$SHELL`rc file, to source make sure all aliases are available.
