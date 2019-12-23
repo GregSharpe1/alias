@@ -33,3 +33,7 @@ alias update="yay -Syu" # yay dependency
 alias code="code --disable-gpu"
 
 alias ghistory="history | grep $@"
+
+# Prevent removing '/'
+# Ask input for more that 3 deletes
+alias rm='rm -I --preserve-root'
