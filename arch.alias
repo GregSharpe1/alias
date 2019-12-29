@@ -1,5 +1,11 @@
+
 alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 
-# webvpn
+# work webvpn
 alias workvpn="sudo openconnect --protocol=anyconnect --authgroup=GNFTE --user=gsharpe webvpn.gracenote.com"
+
+# home vpn
+alias start-vpn='f() { sudo systemctl start openvpn-client@$1 }; f'
+alias stop-vpn='f() { sudo systemctl stop openvpn-client@$1 }; f'
+alias status-vpn='f() { sudo systemctl status openvpn-client@$1 }; f'
