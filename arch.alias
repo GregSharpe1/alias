@@ -9,3 +9,4 @@ alias workvpn="sudo openconnect --protocol=anyconnect --authgroup=GNFTE --user=g
 alias start-vpn='f() { sudo systemctl start openvpn-client@$1 }; f'
 alias stop-vpn='f() { sudo systemctl stop openvpn-client@$1 }; f'
 alias status-vpn='f() { sudo systemctl status openvpn-client@$1 }; f'
+alias list-vpn='sudo ls -la /etc/openvpn/client'
