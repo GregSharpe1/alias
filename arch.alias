@@ -11,3 +11,7 @@ alias stop-vpn='f() { sudo systemctl stop openvpn-client@$1 }; f'
 alias restart-vpn='f() { sudo systemctl restart openvpn-client@$1 }; f'
 alias status-vpn='f() { sudo systemctl status openvpn-client@$1 }; f'
 alias list-vpn='sudo ls -la /etc/openvpn/client'
+#alias active-vpn='f() { nmcli -t -f NAME,TYPE,STATE con | awk -F: '$2=="tun" {print $1}' }; f'
+
+alias i3conf='vim ~/.config/i3/config'
+alias polyconf='vim ~/.config/polybar/config'
