@@ -37,3 +37,7 @@ alias ghistory="history | grep $@"
 # Prevent removing '/'
 # Ask input for more that 3 deletes
 alias rm='rm -I --preserve-root'
+
+# Where is my public ip address
+alias whereismypubip="curl -s ipinfo.io | jq '.city'"
+alias whatismypubip="curl ifconfig.co"

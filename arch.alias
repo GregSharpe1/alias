@@ -15,3 +15,6 @@ alias list-vpn='sudo ls -la /etc/openvpn/client'
 
 alias i3conf='vim ~/.config/i3/config'
 alias polyconf='vim ~/.config/polybar/config'
+
+# Test microphone
+alias test-microphone='arecord -d 5 ~/test-mic.wav'
