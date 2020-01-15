@@ -1,8 +1,13 @@
 alias kk='kubectl'
-alias kgp='kubectl get pods'
-alias kgd='kubectl get deployments'
-alias kgs='kubectl get svc'
-alias kgn='kubectl get ns'
+alias kkg='kubectl get'
+alias kkd='kubectl delete'
+alias kke='kubectl edit'
+alias kvim='kubectl edit'
+
+alias kkgp='kubectl get pods'
+alias kkgd='kubectl get deployments'
+alias kkgs='kubectl get svc'
+alias kkgn='kubectl get ns'
 
 alias kdp='kubectl describe pod'
 alias kdd='kubectl describe deployments'
@@ -15,4 +20,5 @@ alias kdds='kubectl delete svc'
 alias kddn='kubectl delete ns'
 
 alias kaf='kubectl apply -f'
+alias kad='kubectl delete -f'
 

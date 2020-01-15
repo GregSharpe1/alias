@@ -1,0 +1,6 @@
+alias tg="terragrunt"
+alias tgp="terragrunt plan-all"
+alias tga="terragrunt apply-all"
+alias tgd="terragrunt destroy-all"
+alias tgo="terragrunt output-all"
+alias tgv="terragrunt validate-all"

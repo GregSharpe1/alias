@@ -18,3 +18,7 @@ alias polyconf='vim ~/.config/polybar/config'
 
 # Test microphone
 alias test-microphone='arecord -d 5 ~/test-mic.wav'
+
+# Thunar
+alias finder='thunar . &'
+alias open='thunar . &'
