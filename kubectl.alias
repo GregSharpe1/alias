@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias kk='kubectl'
 alias kkg='kubectl get'
 alias kkd='kubectl delete'
@@ -21,4 +23,12 @@ alias kddn='kubectl delete ns'
 
 alias kaf='kubectl apply -f'
 alias kad='kubectl delete -f'
+
+k8s-get-evicted-pods() {
+	kubectl get pods --all-namespaces -o json | jq -r '.items[] | select(.status.reason!=null) | select(.status.reason | contains("Evicted")) | "\(.metadata.name)"'
+}
+
+k8s-delete-evicted-pods() {
+	kubectl get pods --all-namespaces -o json | jq '.items[] | select(.status.reason!=null) | select(.status.reason | contains("Evicted")) | "kubectl delete pods \(.metadata.name) -n \(.metadata.namespace)"' | xargs -n 1 bash -c
+}
 
