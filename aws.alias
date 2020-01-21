@@ -20,3 +20,15 @@ aws-list-sgs() {
 aws-who-am-i() {
   aws sts get-caller-identity --output table
 }
+
+aws-get-ebs() {
+  # aws-get-ebs eu-west-2
+  aws ec2 describe-volumes --filters Name=status,Values=available --region "${1}" | jq --raw-output ".Volumes[].VolumeId"
+}
+
+aws-cleanup-ebs() {
+  # aws-cleanup-ebs eu-west-2
+  aws ec2 describe-volumes --filters Name=status,Values=available --region "${1}" | jq --raw-output ".Volumes[].VolumeId" | while read VOLUME_ID; do \
+        aws ec2 delete-volume --volume-id $VOLUME_ID
+  done
+}

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+work() {
+  export AWS_PROFILE="work-sparkenhance"
+}

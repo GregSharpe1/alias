@@ -5,6 +5,7 @@ alias kkg='kubectl get'
 alias kkd='kubectl delete'
 alias kke='kubectl edit'
 alias kvim='kubectl edit'
+alias kkc='kubectl create'
 
 alias kkgp='kubectl get pods'
 alias kkgd='kubectl get deployments'
