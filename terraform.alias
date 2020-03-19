@@ -2,6 +2,9 @@ alias tf="terraform"
 alias tfi="terraform init"
 alias tfp="terraform plan"
 alias tfa="terraform apply"
+alias tfv="terraform validate"
+alias tfu="terraform force-unlock"
+alias tfr="terraform refresh"
 
 # Workspace
 alias tfw="terraform workspace"
@@ -10,3 +13,11 @@ alias tfwn="terraform workspace new"
 alias tfwd="terraform workspace delete"
 alias tfws="terraform workspace select"
 
+# State
+alias tfs="terraform state"
+alias tfsl="terraform state list"
+alias tfsr="terraform state remove"
+alias tfsm="terraform state move"
+alias tfspl="terraform state pull"
+alias tfsph="terraform state push"
+alias tfss="terraform state show"

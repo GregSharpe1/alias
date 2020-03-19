@@ -9,6 +9,7 @@ alias ......='cd ../../../../..; ls'
 alias "/"="ranger ."
 alias d='docker'
 alias please=sudo
+alias sudo='sudo '
 alias v=vim
 alias da='deactivate'
 alias ra=ranger
@@ -30,7 +31,7 @@ alias untar='tar xvf'
 alias update="yay -Syu" # yay dependency
 
 # Make sure to open code with --no-gpu in terminal
-alias code="code --disable-gpu"
+alias code="code-insiders --disable-gpu ."
 
 alias ghistory="history | grep $@"
 
@@ -41,3 +42,35 @@ alias rm='rm -I --preserve-root'
 # Where is my public ip address
 alias whereismypubip="curl -s ipinfo.io | jq '.city'"
 alias whatismypubip="curl ifconfig.co"
+
+# Make directory and enter it
+mkd() {
+  mkdir -p "$@"
+  cd "$@" || exit
+}
+
+# Determine size of a file or total size of a directory
+fs() {
+	if du -b /dev/null > /dev/null 2>&1; then
+		local arg=-sbh
+	else
+		local arg=-sh
+	fi
+	# shellcheck disable=SC2199
+	if [[ -n "$@" ]]; then
+		du $arg -- "$@"
+	else
+		du $arg -- .[^.]* *
+	fi
+}
+
+# write to todo for denhamparry
+todo() {
+    cd ~/git/gregsharpe/todo
+    git pull
+    echo "* $@" >> TODO.md
+    git add TODO.md
+    git commit -m "Another task todo"
+    git push
+    cd -- || exit
+}

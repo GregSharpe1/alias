@@ -25,3 +25,8 @@ alias open='thunar . &'
 
 alias restart-gpg="gpg-connect-agent updatestartuptty /bye > /dev/null"
 
+# backblaze
+alias bb='backblaze-b2'
+
+# Get current battery percentage
+alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}'"
