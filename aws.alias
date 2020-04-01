@@ -1,12 +1,18 @@
 #!/bin/bash
 
-aws-update-eks-config() {
+aws-who-am-i() {
+  # aws-who-am-i
+
+  aws sts get-caller-identity --output text "${@}"
+}
+
+aws-eks-update-config() {
   # aws-update-eks-config eu-west-1 my-aws-kube-cluster
 
   aws eks --region "${1}" update-kubeconfig --name "${2}" --alias "${2}"
 }
 
-aws-running-instances() {
+aws-ec2-running-instances() {
  aws ec2 describe-instances \
     --region "${1}" \
     --filter Name=instance-state-name,Values=running \
@@ -14,28 +20,33 @@ aws-running-instances() {
     --query 'Reservations[].Instances[].{ID: InstanceId,Hostname: PublicDnsName,Name: Tags[?Key==`Name`].Value | [0],Type: InstanceType, Platform: Platform || `Linux`}'
 }
 
-aws-list-sgs() {
+aws-ec2-list-sgs() {
  aws ec2 describe-security-groups --region "${1}" --query "SecurityGroups[].[GroupId, GroupName]" --output table
 }
 
-aws-who-am-i() {
-  aws sts get-caller-identity --region "${1}" --output table
-}
-
-aws-get-ebs() {
+aws-ec2-get-ebs() {
   # aws-get-ebs eu-west-2
   aws ec2 describe-volumes --filters Name=status,Values=available --region "${1}" | jq --raw-output ".Volumes[].VolumeId"
 }
 
-aws-cleanup-ebs() {
+aws-ec2-cleanup-ebs() {
   # aws-cleanup-ebs eu-west-2
   aws ec2 describe-volumes --filters Name=status,Values=available --region "${1}" | jq --raw-output ".Volumes[].VolumeId" | while read VOLUME_ID; do \
-        aws ec2 delete-volume --volume-id $VOLUME_ID
+        aws ec2 delete-volume --volume-id $VOLUME_ID --region "${1}"
   done
 }
 
-aws-list-clusters() {
+aws-eks-list-clusters() {
   # aws-list-clusters us-west-1
   aws eks list-clusters --region "${1}" \
 	  | jq -r '.clusters[]'
+}
+
+aws-ecr-login() {
+  # aws-ecr-login eu-west-1
+
+  endpoint=$(aws ecr get-authorization-token --query 'authorizationData[].proxyEndpoint' --region "${1}" --output text)
+  passwd=$(aws ecr get-authorization-token --query 'authorizationData[].authorizationToken' --region "${1}" --output text | base64 --decode | cut -d: -f2)
+  docker login -u AWS -p $passwd $endpoint
+
 }
